@@ -1,0 +1,10 @@
+
+*.sln
+
+Clans/obj/
+Clans/bin/
+
+ClansSharedAPI/obj/
+ClansSharedAPI/bin/
+
+.idea/*
