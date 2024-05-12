@@ -1,7 +1,7 @@
 
 *.sln
 
-*.user
+Clans.sln.DotSettings.user
 
 Clans/obj/
 Clans/bin/
