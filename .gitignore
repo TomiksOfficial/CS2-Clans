@@ -1,6 +1,8 @@
 
 *.sln
 
+*.user
+
 Clans/obj/
 Clans/bin/
 
