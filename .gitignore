@@ -3,10 +3,15 @@
 
 Clans.sln.DotSettings.user
 
-Clans/obj/
-Clans/bin/
+LClans/obj/
+LClans/bin/
 
-ClansSharedAPI/obj/
-ClansSharedAPI/bin/
+ClansSharedAPI/obj/*
+ClansSharedAPI/bin/*
+
+LClanHealth/obj/*
+LClanHealth/bin/*
+
+result/
 
 .idea/*
