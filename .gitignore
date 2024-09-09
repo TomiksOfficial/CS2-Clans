@@ -12,6 +12,6 @@ ClansSharedAPI/bin/*
 LClanHealth/obj/*
 LClanHealth/bin/*
 
-result/
+result
 
 .idea/*
