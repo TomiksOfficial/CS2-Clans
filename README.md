@@ -1,4 +1,2 @@
 # Clans
-**DEV VERSION**
-
-**DOESNT WORK**
+Description on CSDEVS
