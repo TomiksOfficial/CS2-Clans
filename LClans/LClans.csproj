@@ -18,6 +18,10 @@
             <HintPath>../ClansSharedApi/bin/Debug/net8.0/ClansSharedAPI.dll</HintPath>
             <Private>false</Private>
         </Reference>
+        <Reference Include="MenuManagerApi">
+            <HintPath>../../MenuManagerAPI/MenuManagerApi/MenuManagerApi.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
     </ItemGroup>
 
     <Target Name="CopyClansSharedApiToOutput" AfterTargets="Build">
@@ -25,8 +29,13 @@
               DestinationFolder="../result/shared/ClansSharedApi/"/>
     </Target>
 
-<!--    <ItemGroup>-->
-<!--        <None Update="lang\**\*.*" CopyToOutputDirectory="PreserveNewest" />-->
-<!--    </ItemGroup>-->
+    <Target Name="CopyMenuManagerSharedApiToOutput" AfterTargets="Build">
+        <Copy SourceFiles="../../MenuManagerAPI/MenuManagerApi/MenuManagerApi.dll"
+              DestinationFolder="../result/shared/MenuManagerApi/"/>
+    </Target>
+    
+    <ItemGroup>
+        <None Update="lang\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
 
 </Project>

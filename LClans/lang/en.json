@@ -1,0 +1,40 @@
+﻿{
+  "clans.mainmenu.title": "Main Menu",
+  "clans.mainmenu.createclan": "Create clan",
+  "clans.mainmenu.createclanmessage": "Write \"!createclan clanname\" to create the clan",
+  "clans.mainmenu.topclans": "Top Clans",
+  
+  "clans.clanmenu.title": "Clan: {0}",
+  "clans.clanmenu.access": "Access to Manage: {0}",
+  "clans.clanmenu.skills": "Skills",
+  "clans.clanmenu.members": "Members",
+  "clans.clanmenu.invite": "Invite Player",
+  "clans.clanmenu.claninfo": "Clan Info",
+  
+  "clans.invite.title": "Invitation Menu",
+  "clans.invite.invitemessage": "You invited to the clan: {0}\nWrite !clanaccept to join in. You have 15 seconds",
+  
+  "clans.topclans.title": "Top Clans",
+  "clans.topclans.noclans": "List of clans is empty",
+  
+  "clans.mainmenu.skillslist": "Skills List",
+  "clans.skills.health": "Health",
+  
+  "clans.skillmenu.title": "Skill: {0}",
+  "clans.skillmenu.skilllevel": "Level: {0}",
+  "clans.skillmenu.skilllevelup": "Level Up",
+  "clans.skillmenu.skillsell": "Sell",
+  
+  "clans.infomenu.title": "Clan Info",
+  "clans.infomenu.clanname": "Clan Name: {0}",
+  "clans.infomenu.skillpoints": "Skill Points: {0}",
+  "clans.infomenu.level": "Clan Level: {0}",
+  "clans.infomenu.exp": "Clan Exp: {0}",
+  "clans.infomenu.reqexp": "Clan Required Exp: {0}",
+  
+  "clans.membersmenu.title": "Members",
+  "clans.membersmenu.member": "Member: {0}",
+  "clans.membersmenu.role": "Role: {0}",
+  "clans.membersmenu.accesstoedit": "Access to Manage: {0}",
+  "clans.membersmenu.eject": "Eject From Clan"
+}

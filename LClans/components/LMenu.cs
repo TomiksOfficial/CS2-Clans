@@ -13,9 +13,7 @@ public class LMenu
 			return;
 		}
 		
-		// Console.WriteLine("test clans comm 3");
-
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.mainmenu.title"]);
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.mainmenu.title"]);
 
 		if (player.MemberInfo.ClanID == -1)
 		{
@@ -27,7 +25,6 @@ public class LMenu
 		{
 			if (!LBaseInfo.Clans.TryGetValue(player.MemberInfo.ClanID, out var clan))
 			{
-				// Console.WriteLine("test clans comm 4");
 				return;
 			}
 
@@ -44,8 +41,6 @@ public class LMenu
 
 		menu.ExitButton = true;
 		menu.Open(player.player);
-		
-		// Console.WriteLine("test clans comm 5");
 	}
 	
 	public static void OpenClanMenu(LPlayer? player)
@@ -54,8 +49,8 @@ public class LMenu
 		{
 			return;
 		}
-
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.clanmenu.title", LBaseInfo.Clans[player.MemberInfo.ClanID].ClanName]);
+		
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.clanmenu.title", LBaseInfo.Clans[player.MemberInfo.ClanID].ClanName]);
 
 		menu.AddMenuOption(
 			LBaseInfo.Plugin.Localizer["clans.clanmenu.access", player.MemberInfo.AccesToEditClan ? "+" : "-"],
@@ -112,7 +107,7 @@ public class LMenu
 			return;
 		}
 
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.invite.title"]);
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.invite.title"]);
 		
 		menu.ExitButton = true;
 
@@ -131,7 +126,7 @@ public class LMenu
 					return;
 				}
 				
-				ply.player.PrintToCenterHtml(LBaseInfo.Plugin.Localizer["clans.invite.invitemessage", clan.ClanName]);
+				ply.player.PrintToChat(LBaseInfo.Plugin.Localizer["clans.invite.invitemessage", clan.ClanName]);
 				LBaseInfo.AwaitToAccept.TryAdd(ply.player.SteamID, clan.ClanID);
 
 				LBaseInfo.Plugin.AddTimer(15.0f, () =>
@@ -143,6 +138,8 @@ public class LMenu
 					
 					LBaseInfo.AwaitToAccept.Remove(ply.player.SteamID);
 				}, TimerFlags.STOP_ON_MAPCHANGE);
+
+				LBaseInfo.Plugin.menuAPI.CloseMenu(player.player);
 			}, LBaseInfo.AwaitToAccept.ContainsKey(ply.player.SteamID));
 		}
 
@@ -162,7 +159,7 @@ public class LMenu
 					return;
 				}
 
-				ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.topclans.title"]);
+				var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.topclans.title"]);
 		
 				menu.ExitButton = true;
 
@@ -190,7 +187,7 @@ public class LMenu
 			return;
 		}
 
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.mainmenu.skillslist"]);
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.mainmenu.skillslist"]);
 		
 		menu.ExitButton = true;
 
@@ -220,8 +217,8 @@ public class LMenu
 			return;
 		}
 
-		ChatMenu menu =
-			new ChatMenu(
+		var menu =
+			LBaseInfo.Plugin.menuAPI.NewMenu(
 				$"{LBaseInfo.Plugin.Localizer["clans.skillmenu.title", LBaseInfo.Plugin.Localizer[$"clans.skills.{skillName}"]]}");
 
 		menu.ExitButton = true;
@@ -262,7 +259,7 @@ public class LMenu
 			return;
 		}
 
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.infomenu.title"]);
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.infomenu.title"]);
 		
 		menu.ExitButton = true;
 
@@ -287,7 +284,7 @@ public class LMenu
 			return;
 		}
 
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.membersmenu.title"]);
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.membersmenu.title"]);
 		
 		menu.ExitButton = true;
 
@@ -309,7 +306,7 @@ public class LMenu
 			return;
 		}
 
-		ChatMenu menu = new ChatMenu(LBaseInfo.Plugin.Localizer["clans.membersmenu.member", member.name]);
+		var menu = LBaseInfo.Plugin.menuAPI.NewMenu(LBaseInfo.Plugin.Localizer["clans.membersmenu.member", member.name]);
 		
 		menu.ExitButton = true;
 
@@ -334,7 +331,7 @@ public class LMenu
 				memb.MemberInfo.AccesToEditClan = !memb.MemberInfo.AccesToEditClan;
 				
 				OpenMemberMenu(player, member);
-			}, !player.MemberInfo.AccesToEditClan); // добавить функционал
+			}, !player.MemberInfo.AccesToEditClan);
 
 		menu.AddMenuOption(LBaseInfo.Plugin.Localizer["clans.membersmenu.eject"], (ply, option) =>
 		{

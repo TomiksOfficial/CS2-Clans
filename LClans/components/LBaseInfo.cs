@@ -9,7 +9,7 @@ public static class LBaseInfo
 
 	public static Dictionary<ulong, LPlayer?> LPlayers = new();
 
-	public static BasePlugin Plugin { get; set; }
+	public static LClans Plugin { get; set; }
 	
 	public static APISkills APISkills { get; set; }
 	

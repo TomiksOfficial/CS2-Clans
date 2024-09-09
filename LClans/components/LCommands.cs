@@ -33,6 +33,8 @@ public partial class LClans
 			LBaseInfo.AwaitToAccept.Remove(player.SteamID);
 
 			DB.SavePlayer(LBaseInfo.LPlayers[player.SteamID]!, player.PlayerName);
+			
+			// player.PrintToChat();
 		}
 	}
 	

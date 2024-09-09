@@ -5,10 +5,11 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Capabilities;
 using Microsoft.Extensions.Logging;
+using MenuManager;
 
 namespace Clans;
 
-[MinimumApiVersion(228)]
+[MinimumApiVersion(264)]
 public partial class LClans : BasePlugin, IPluginConfig<CFG>
 {
 	public override string ModuleName => "LClans";
@@ -22,6 +23,9 @@ public partial class LClans : BasePlugin, IPluginConfig<CFG>
 	private static PluginCapability<IAPISkills> APISkills { get; } = new("clans:skills");
 	private static PlayerCapability<ILPlayer> APIPlayer { get; } = new("clans:player");
 	private static PluginCapability<IAPIClan> APIClan { get; } = new("clans:clan");
+	
+	public IMenuApi? menuAPI;
+	private readonly PluginCapability<IMenuApi?> _menuAPI = new("menu:nfcore");
 
 	public override void Load(bool hotReload)
 	{
@@ -38,7 +42,7 @@ public partial class LClans : BasePlugin, IPluginConfig<CFG>
 		Capabilities.RegisterPluginCapability(APISkills, () => LBaseInfo.APISkills);
 		
 		Capabilities.RegisterPluginCapability(APIClan, () => LBaseInfo.APIClan);
-        
+
 		Capabilities.RegisterPlayerCapability(APIPlayer, player =>
 		{
 			if (!LStock.IsValidPlayer(player) || !LBaseInfo.LPlayers.ContainsKey(player.SteamID)) return null;
@@ -46,13 +50,17 @@ public partial class LClans : BasePlugin, IPluginConfig<CFG>
 			return LBaseInfo.LPlayers[player.SteamID];
 		});
 		
+		SkillsInfo.GetConfigsInfo();
 
 		RegisterListener<Listeners.OnClientDisconnectPost>(OnPlayerDisconnectPost);
 	}
 
 	public override void OnAllPluginsLoaded(bool hotReload)
 	{
-		SkillsInfo.GetConfigsInfo();
+		
+		
+		menuAPI = _menuAPI.Get();
+		if (menuAPI == null) Logger.LogInformation("[LClans] MenuManager Core not found...");
 	}
 
 	public override void Unload(bool hotReload)

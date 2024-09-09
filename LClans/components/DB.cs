@@ -281,11 +281,11 @@ public class DB
 					player.player.PrintToChat("Clan was created");
 				});
 			}
-			catch
+			catch (Exception e)
 			{
 				Server.NextFrame(() =>
 				{
-					LBaseInfo.Plugin.Logger.LogError("[CLANS] Failed to create clan; clanid is not returned");
+					LBaseInfo.Plugin.Logger.LogError("[CLANS] Failed to create clan; clanid is not returned / " + e.Message);
 				});
 			}
 		}

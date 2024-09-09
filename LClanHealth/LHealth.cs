@@ -10,7 +10,7 @@ public class LHealth : BasePlugin
 {
 	public override string ModuleName => "Clans | Health";
 	public override string ModuleVersion => "0.1.0";
-	public override string ModuleDescription => "LRPG Health Skill";
+	public override string ModuleDescription => "LClans Health Skill";
 	public override string ModuleAuthor => "Tomiks(vk.com/tomiksofficial)";
 
 	private static string SkillName => "health";
@@ -39,14 +39,11 @@ public class LHealth : BasePlugin
 
 		EventManager.OnPlayerSpawned += OnPlayerSpawn;
 
-		if (!SkillManager.IsSkillConfigExists(SkillName))
-		{
-			SkillManager.CreateDefaultSkillStructure(SkillName, 20,
-				new Dictionary<string, string>
-				{
-					{"health", "50"}
-				});
-		}
+		SkillManager.CreateDefaultSkillStructure(SkillName, 20,
+			new Dictionary<string, string>
+			{
+				{"health", "50"}
+			});
 
 		SkillConfig = SkillManager.GetSkillConfig(SkillName);
 
